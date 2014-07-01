@@ -58,7 +58,7 @@ rescue Ruconomic::Fault => e
   puts e
 end
 
-# => Ruconomic::Fault { :code => 'soap:Client', :reason => 'Ruconomic.Api.Exceptions.IntegrityException(E06000): The debtor does not exist. (id=<id>)', :details => '' }
+# => Ruconomic::Fault { :code => 'soap:Client', :reason => 'Economic.Api.Exceptions.IntegrityException(E06000): The debtor does not exist. (id=<id>)', :details => '' }
 ```
 
 ## Contributing
