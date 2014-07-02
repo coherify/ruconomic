@@ -61,6 +61,10 @@ end
 # => Ruconomic::Fault { :code => 'soap:Client', :reason => 'Economic.Api.Exceptions.IntegrityException(E06000): The debtor does not exist. (id=<id>)', :details => '' }
 ```
 
+## Documentation
+
+You can find the latest API documentation at [http://rdoc.info/github/ta/ruconomic/index](http://rdoc.info/github/ta/ruconomic/index) or generate your own copy with ```bundle install && bundle exec yardoc``` after cloning the repository.
+
 ## Contributing
 
 1. Fork it ( https://github.com/ta/ruconomic/fork )
