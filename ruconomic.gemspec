@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.version       = Ruconomic::VERSION
   spec.authors       = ["Tonni Tølbøll Lund Aagesen"]
   spec.email         = ["tonni@toelboell-lund.dk"]
-  spec.summary       = %q{Easy to use ruby wrapper for e-conomic.com's webservice}
+  spec.summary       = %q{Lightweight, speedy and easy-to-use ruby wrapper for the e-conomic.com SOAP web service}
   spec.homepage      = "https://github.com/ta/ruconomic"
   spec.license       = "MIT"
 
