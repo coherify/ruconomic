@@ -29,7 +29,7 @@ module Ruconomic
         h[:Envelope][:body] 
       end
 
-      # We want #string to return a Ruconomic::SOAP::Document
+      # We want #string to return a Ruconomic::SOAP::Document and not a LibXML::XML::Document
       def self.string(value, options = {})
         document = Ruconomic::SOAP::Document.new
         document.root = document.import(super(value, options).root)
