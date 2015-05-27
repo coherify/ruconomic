@@ -2,9 +2,9 @@
 
 The ruconomic gem provides a lightweight, speedy and easy-to-use ruby wrapper for the [e-conomic](http://www.e-conomic.com) SOAP web service - it will build, parse and transport some XML and little else. For a more full SOAPedelic experience, have a look at [rconomic](https://github.com/lokalebasen/rconomic). 
 
-This gem is intended to be a crowd source project. The [e-conomic webservice](https://api.e-conomic.com/secure/api1/EconomicWebService.asmx) implements ~1500 operations(!), and all those operations are mapped to ruby classes and methods under ```lib/ruconomic/api``` - but not fully implemented. As always, the best way to understand is to [browse the source](https://github.com/ta/ruconomic/tree/master/lib/ruconomic/api).
+This gem is intended to be a crowd source project. The [e-conomic webservice](https://api.e-conomic.com/secure/api1/EconomicWebService.asmx) implements ~1500 operations(!), and all those operations are mapped to ruby classes and methods under ```lib/ruconomic/api``` - but not fully implemented. As always, the best way to understand is to [browse the source](https://github.com/coherify/ruconomic/tree/master/lib/ruconomic/api).
 
-So, the idea is that we [add functionality](https://github.com/ta/ruconomic#contributing) as needed.
+So, the idea is that we [add functionality](https://github.com/coherify/ruconomic#contributing) as needed.
 
 ## Dependencies
 
@@ -67,7 +67,7 @@ You can find the latest API documentation at [http://rdoc.info/github/ta/ruconom
 
 ## Contributing
 
-1. Fork it ( https://github.com/ta/ruconomic/fork )
+1. Fork it ( https://github.com/coherify/ruconomic/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
