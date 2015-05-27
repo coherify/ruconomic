@@ -63,7 +63,7 @@ end
 
 ## Documentation
 
-You can find the latest API documentation at [http://rdoc.info/github/ta/ruconomic/index](http://rdoc.info/github/ta/ruconomic/index) or generate your own copy with ```bundle install && bundle exec yardoc``` after cloning the repository.
+You can find the latest API documentation at [http://rdoc.info/github/coherify/ruconomic/index](http://rdoc.info/github/coherify/ruconomic/index) or generate your own copy with ```bundle install && bundle exec yardoc``` after cloning the repository.
 
 ## Contributing
 
