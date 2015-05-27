@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Tonni Tølbøll Lund Aagesen"]
   spec.email         = ["tonni@toelboell-lund.dk"]
   spec.summary       = %q{Lightweight, speedy and easy-to-use ruby wrapper for the e-conomic.com SOAP web service}
-  spec.homepage      = "https://github.com/ta/ruconomic"
+  spec.homepage      = "https://github.com/coherify/ruconomic"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
