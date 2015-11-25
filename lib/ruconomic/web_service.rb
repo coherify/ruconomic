@@ -16,10 +16,15 @@ module Ruconomic
 
       call(document.to_s(:indent => false), action)
     end
-    
+
     def call(document, action)
       @@curl ||= Curl::Easy.new(Ruconomic.url) do |c|
         c.headers["Content-Type"] = "text/xml; charset=UTF-8"
+        
+        if Ruconomic.app_identifier
+          c.headers['X-EconomicAppIdentifier'] = Ruconomic.app_identifier
+        end
+
         c.timeout = Ruconomic.timeout
         c.enable_cookies = true
         if Ruconomic.follow_redirects

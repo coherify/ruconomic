@@ -8,7 +8,7 @@ module Ruconomic
   URL = "https://www.e-conomic.com/secure/api1/EconomicWebService.asmx"
 
   class << self
-    attr_accessor :agreement, :username, :password, :timeout, :follow_redirects, :max_redirects, :url
+    attr_accessor :agreement, :username, :password, :timeout, :follow_redirects, :max_redirects, :url, :app_identifier
 
     def configure &block
       yield self if block_given?
