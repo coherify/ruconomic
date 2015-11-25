@@ -39,6 +39,9 @@ Ruconomic.configure do |config|
   config.agreement = "agreement"
   config.username = "username"
   config.password = "password"
+
+  ## change for your integration but try to keep the format same
+  config.app_identifier = "MyCoolIntegration/1.1 (http://example.com/MyCoolIntegration/; MyCoolIntegration@example.com) Ruconomic/#{Ruconomic::VERSION}"
 end
 
 Ruconomic.session do |api|
