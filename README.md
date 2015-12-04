@@ -1,6 +1,6 @@
 # ruconomic
 
-The ruconomic gem provides a lightweight, speedy and easy-to-use ruby wrapper for the [e-conomic](http://www.e-conomic.com) SOAP web service - it will build, parse and transport some XML and little else. For a more full SOAPedelic experience, have a look at [rconomic](https://github.com/lokalebasen/rconomic). 
+The ruconomic gem provides a lightweight, speedy and easy-to-use ruby wrapper for the [e-conomic](http://www.e-conomic.com) SOAP web service - it will build, parse and transport some XML and little else. For a more full SOAPedelic experience, have a look at [rconomic](https://github.com/lokalebasen/rconomic).
 
 This gem is intended to be a crowd source project. The [e-conomic webservice](https://api.e-conomic.com/secure/api1/EconomicWebService.asmx) implements ~1500 operations(!), and all those operations are mapped to ruby classes and methods under ```lib/ruconomic/api``` - but not fully implemented. As always, the best way to understand is to [browse the source](https://github.com/coherify/ruconomic/tree/master/lib/ruconomic/api).
 
@@ -39,8 +39,7 @@ Ruconomic.configure do |config|
   config.agreement = "agreement"
   config.username = "username"
   config.password = "password"
-
-  ## change for your integration but try to keep the format same
+  # change for your integration but try to keep the format same
   config.app_identifier = "MyCoolIntegration/1.1 (http://example.com/MyCoolIntegration/; MyCoolIntegration@example.com) Ruconomic/#{Ruconomic::VERSION}"
 end
 
