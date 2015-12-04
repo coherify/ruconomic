@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.9.3
+
+- Added support for X-EconomicAppIdentifier header (dinesh)
+
+## 0.9.2
+
+- Added fetching invoice by number (twarberg)
+
 ## 0.9.1
 
 - Added a changelog
