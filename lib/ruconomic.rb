@@ -8,7 +8,16 @@ module Ruconomic
   URL = "https://www.e-conomic.com/secure/api1/EconomicWebService.asmx"
 
   class << self
-    attr_accessor :agreement, :username, :password, :timeout, :follow_redirects, :max_redirects, :url, :app_identifier
+    attr_accessor :agreement,
+                  :username,
+                  :password,
+                  :timeout,
+                  :follow_redirects,
+                  :max_redirects,
+                  :url,
+                  :app_identifier,
+                  :token,
+                  :app_token
 
     def configure &block
       yield self if block_given?
@@ -31,8 +40,17 @@ module Ruconomic
     end
 
     def session(&block)
-      raise "Not configured" unless agreement && username && password && url
-      Ruconomic::API.connect(Ruconomic.agreement, Ruconomic.username, Ruconomic.password)
+      with_credential = agreement && username && password && url
+      with_token      = token && app_token && url
+
+      if with_credential
+        Ruconomic::API.connect(Ruconomic.agreement, Ruconomic.username, Ruconomic.password)
+      elsif with_token
+        Ruconomic::API.connect_with_token(Ruconomic.token, Ruconomic.app_token)
+      else
+        raise "Not configured"
+      end
+
       yield self::API if block_given?
     ensure
       Ruconomic::API.disconnect
