@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.9.4
+
+ - Added support for token-based login (dinesh)
+
 ## 0.9.3
 
 - Added support for X-EconomicAppIdentifier header (dinesh)
