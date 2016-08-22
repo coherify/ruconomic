@@ -36,9 +36,15 @@ Or install it yourself as:
 require "ruconomic"
 
 Ruconomic.configure do |config|
+  # to connect with username, password
   config.agreement = "agreement"
   config.username = "username"
   config.password = "password"
+
+  # or to connect with grant token, app secret token
+  config.token = "token"
+  config.app_token = "app-token"
+
   # change for your integration but try to keep the format same
   config.app_identifier = "MyCoolIntegration/1.1 (http://example.com/MyCoolIntegration/; MyCoolIntegration@example.com) Ruconomic/#{Ruconomic::VERSION}"
 end
