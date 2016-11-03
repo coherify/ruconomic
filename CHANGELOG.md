@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.9.5
+
+ - Changed API hostname (twarberg)
+
 ## 0.9.4
 
  - Added support for token-based login (dinesh)

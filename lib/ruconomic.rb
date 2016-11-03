@@ -5,7 +5,7 @@ require "ruconomic/api"
 
 module Ruconomic
 
-  URL = "https://www.e-conomic.com/secure/api1/EconomicWebService.asmx"
+  URL = "https://api.e-conomic.com/secure/api1/EconomicWebService.asmx"
 
   class << self
     attr_accessor :agreement,
