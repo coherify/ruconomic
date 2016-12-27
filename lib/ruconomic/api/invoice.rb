@@ -204,6 +204,8 @@ module Ruconomic
           message.add 'number', number
         end
 
+        raise "Invoice not found" if response.to_hash[:invoice_find_by_number_response].nil?
+
         response.to_hash[:invoice_find_by_number_response][:invoice_find_by_number_result][:number]
       end
 
