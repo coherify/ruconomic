@@ -1,5 +1,9 @@
 # Changelog
 
+# 0.9.6
+
+ - Handle nil-response when searching for invoices (twarberg)
+
 ## 0.9.5
 
  - Changed API hostname (twarberg)
