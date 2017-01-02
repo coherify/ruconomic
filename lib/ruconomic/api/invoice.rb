@@ -204,7 +204,7 @@ module Ruconomic
           message.add 'number', number
         end
 
-        response.to_hash[:invoice_find_by_number_response][:invoice_find_by_number_result][:number]
+        response.to_hash.dig(:invoice_find_by_number_response, :invoice_find_by_number_result, :number)
       end
 
       # Returns an array with handles for the invoices corresponding to the given invoice numbers. If a invoice with a given number does not exist then the array contains nothing at that index.
