@@ -1,3 +1,5 @@
+require "ruby_dig"
+
 module Ruconomic
   module API
     module Invoice
