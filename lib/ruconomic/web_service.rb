@@ -39,7 +39,7 @@ module Ruconomic
         if @@curl.response_code != 200
           h = response.to_hash || {}
           fault = h[:fault]
-          raise Ruconomic::Fault.new(fault[:faultcode],fault[:faultstring],fault[:details]) if fault
+          raise Ruconomic::Fault.new(fault) if fault
         end
         LibXML::XML::Namespace.new(response.root, nil, "http://e-conomic.com")
         response.root.namespaces.default_prefix = "dns"

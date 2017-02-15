@@ -1,17 +1,14 @@
 module Ruconomic
   class Fault < StandardError
-    attr_reader :code, :reason, :details
-    
-    def initialize(code, reason, details)
-      super(reason)
-      @code = code
-      @reason = reason
-      @details = details
+    attr_reader :fault
+
+    def initialize(fault)
+      super(fault[:code] || fault[:faultcode])
+      @fault = fault
     end
-    
+
     def to_s
-        "Ruconomic::Fault { :code => '#{@code}', :reason => '#{@reason}', :details => '#{@details}' }"
-    end     
-    
+      "Ruconomic::Fault #{fault.to_s}"
+    end
   end
 end
