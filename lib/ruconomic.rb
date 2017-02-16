@@ -1,3 +1,4 @@
+require "ruby_dig"
 require "ruconomic/version"
 require "ruconomic/fault"
 require "ruconomic/web_service"
