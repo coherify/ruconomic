@@ -86,6 +86,7 @@ You can find the latest API documentation at [http://rdoc.info/github/coherify/r
 
 * @olepalm / Substance Lab
 * @twaberg / Interface
+* @dinesh / QuickPay
 
 ## License
 
