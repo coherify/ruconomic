@@ -84,7 +84,8 @@ You can find the latest API documentation at [http://rdoc.info/github/coherify/r
 
 ## Contributors
 
-Open for vacancy
+@olepalm / Substance Lab
+@twaberg / Interface
 
 ## License
 
