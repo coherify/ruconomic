@@ -9,29 +9,26 @@ module Ruconomic
       def self.create_from_data(line_data)
         response = invoke('CurrentInvoiceLine_CreateFromData') do |message|
           message.add 'data' do |data|
-            data.add 'Number', line_data.fetch(:number, nil)
-            data.add 'InvoiceHandle' do |invoice_handle|
-              invoice_handle.add 'Id', line_data.fetch(:invoice_handle, {}).fetch(:id, nil)
-            end
-            data.add 'Description', line_data.fetch(:description, nil)
-            data.add 'DeliveryDate', line_data.fetch(:delivery_date, nil)
-            data.add 'UnitHandle' do |unit_handle|
-              unit_handle.add 'Number', line_data.fetch(:unit_handle, {}).fetch(:number, nil)
-            end
-            data.add 'ProductHandle' do |product_handle|
-              product_handle.add 'Number', line_data.fetch(:product_handle, {}).fetch(:number, nil)
-            end
-            data.add 'Quantity', line_data.fetch(:quantity, nil)
-            data.add 'UnitNetPrice', line_data.fetch(:unit_net_price, nil)
-            data.add 'DiscountAsPercent', line_data.fetch(:discount_as_percent, nil)
-            data.add 'UnitCostPrice', line_data.fetch(:unit_cost_price, nil)
-            data.add 'TotalNetAmount', line_data.fetch(:total_net_amount, nil)
-            data.add 'TotalMargin', line_data.fetch(:total_margin, nil)
-            data.add 'MarginAsPercent', line_data.fetch(:margin_as_percent, nil)
+            data.add 'Number', line_data.dig(:number)
+            data.add_handle('InvoiceHandle', line_data.dig(:invoice_handle, :id), 'Id')
+            data.add_optional('Description', line_data.dig(:description))
+            data.add 'DeliveryDate', line_data.dig(:delivery_date)
+            data.add_handle('UnitHandle', line_data.dig(:unit_handle, :number))
+            data.add_handle('ProductHandle', line_data.dig(:product_handle, :number))
+            data.add('Quantity', line_data.dig(:quantity))
+            data.add('UnitNetPrice', line_data.dig(:unit_net_price))
+            data.add('DiscountAsPercent', line_data.dig(:discount_as_percent))
+            data.add_optional('UnitCostPrice', line_data.dig(:unit_cost_price))
+            data.add('TotalNetAmount', line_data.dig(:total_net_amount))
+            data.add('TotalMargin', line_data.dig(:total_margin))
+            data.add('MarginAsPercent', line_data.dig(:margin_as_percent))
           end
         end
 
-        response.to_hash[:current_invoice_line_create_from_data_response][:current_invoice_line_create_from_data_result]
+        response.to_hash.dig(
+          :current_invoice_line_create_from_data_response,
+          :current_invoice_line_create_from_data_result
+        )
       end
 
       # Creates new current invoice lines from data objects.
