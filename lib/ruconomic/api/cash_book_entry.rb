@@ -235,7 +235,7 @@ module Ruconomic
       # Parameters: data: The data object that specifies the properties of the new cash book entry.
       #
       # @see https://api.e-conomic.com/secure/api1/EconomicWebService.asmx?op=CashBookEntry_CreateFromData
-      # @return [Hash] The body content of the SOAP response.
+      # @return [Array] with cashbook entry ids.
       def self.create_from_data(entry_data)
         response = invoke('CashBookEntry_CreateFromData') do |message|
           message.add 'data' do |data|
@@ -282,7 +282,7 @@ module Ruconomic
         response.to_hash.dig(
           :cash_book_entry_create_from_data_response,
           :cash_book_entry_create_from_data_result
-        )
+        ).values
       end
 
       # Creates new cash book entries from data objects.
