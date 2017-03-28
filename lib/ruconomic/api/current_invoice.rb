@@ -489,48 +489,38 @@ module Ruconomic
       def self.create_from_data(invoice_data)
         response = invoke('CurrentInvoice_CreateFromData') do |message|
           message.add 'data' do |data|
-            data.add 'Id', invoice_data.fetch(:id, nil)
-            data.add 'DebtorHandle' do |debtor_handle|
-              debtor_handle.add 'Number', invoice_data.fetch(:debtor_handle, {}).fetch(:number, nil)
-            end
-            data.add 'DebtorName', invoice_data.fetch(:debtor_name, nil)
-            data.add 'DebtorAddress', invoice_data.fetch(:debtor_address, nil)
-            data.add 'DebtorPostalCode', invoice_data.fetch(:debtor_postal_code, nil)
-            data.add 'DebtorCity', invoice_data.fetch(:debtor_city, nil)
-            data.add 'DebtorCountry', invoice_data.fetch(:debtor_country, nil)
-            if attention_id = invoice_data.fetch(:attention_handle, {}).fetch(:id, nil)
-              data.add 'AttentionHandle' do |attention_handle|
-                attention_handle.add 'Id', attention_id
-              end
-            end
-            data.add 'Date', invoice_data.fetch(:date, nil)
-            data.add 'TermOfPaymentHandle' do |term_handle|
-              term_handle.add 'Id', invoice_data.fetch(:term_of_payment_handle, {}).fetch(:id, nil)
-            end
-            data.add 'DueDate', invoice_data.fetch(:due_date, nil)
-            data.add "CurrencyHandle" do |currency_handle|
-              currency_handle.add 'Code', invoice_data.fetch(:currency_handle, {}).fetch(:code, nil)
-            end
-            data.add 'ExchangeRate', invoice_data.fetch(:exchange_rate, nil)
-            data.add 'IsVatIncluded', invoice_data.fetch(:is_vat_included, nil)
-            data.add 'LayoutHandle' do |layout_handle|
-              layout_handle.add 'Id', invoice_data.fetch(:layout_handle, {}).fetch(:id, nil)
-            end
-            data.add 'DeliveryDate', invoice_data.fetch(:delivery_date, nil)
-            data.add 'Heading', invoice_data.fetch(:heading, nil)
-            data.add 'TextLine1', invoice_data.fetch(:text_line1, nil)
-            data.add 'TextLine2', invoice_data.fetch(:text_line2, nil)
-            data.add 'NetAmount', invoice_data.fetch(:net_amount, nil)
-            data.add 'VatAmount', invoice_data.fetch(:vat_amount, nil)
-            data.add 'GrossAmount', invoice_data.fetch(:gross_amount, nil)
-            data.add 'Margin', invoice_data.fetch(:margin, nil)
-            data.add 'MarginAsPercent', invoice_data.fetch(:margin_as_percent, nil)
+            data.add('Id', invoice_data.dig(:id))
+            data.add_handle('DebtorHandle', invoice_data.dig(:debtor_handle, :number))
+            data.add('DebtorName', invoice_data.dig(:debtor_name))
+            data.add_optional('DebtorAddress', invoice_data.dig(:debtor_address))
+            data.add_optional('DebtorPostalCode', invoice_data.dig(:debtor_postal_code))
+            data.add_optional('DebtorCity', invoice_data.dig(:debtor_city))
+            data.add_optional('DebtorCountry', invoice_data.dig(:debtor_country))
+            data.add_handle('AttentionHandle', invoice_data.dig(:attention_handle, :id), 'Id')
+            data.add('Date', invoice_data.dig(:date))
+            data.add_handle('TermOfPaymentHandle', invoice_data.dig(:term_of_payment_handle, :id), 'Id')
+            data.add('DueDate', invoice_data.dig(:due_date))
+            data.add_handle('CurrencyHandle', invoice_data.dig(:currency_handle, :code), 'Code')
+            data.add_optional('ExchangeRate', invoice_data.dig(:exchange_rate))
+            data.add('IsVatIncluded', invoice_data.dig(:is_vat_included))
+            data.add_handle('LayoutHandle', invoice_data.dig(:layout_handle, :id), 'Id')
+            data.add('DeliveryDate', invoice_data.dig(:delivery_date))
+            data.add_optional('Heading', invoice_data.dig(:heading))
+            data.add_optional('TextLine1', invoice_data.dig(:text_line1))
+            data.add_optional('TextLine2', invoice_data.dig(:text_line2))
+            data.add('NetAmount', invoice_data.dig(:net_amount))
+            data.add('VatAmount', invoice_data.dig(:vat_amount))
+            data.add('GrossAmount', invoice_data.dig(:gross_amount))
+            data.add('Margin', invoice_data.dig(:margin))
+            data.add('MarginAsPercent', invoice_data.dig(:margin_as_percent))
           end
         end
 
-        response.to_hash[:current_invoice_create_from_data_response] \
-          [:current_invoice_create_from_data_result] \
-          [:id]
+        response.to_hash.dig(
+          :current_invoice_create_from_data_response,
+          :current_invoice_create_from_data_result,
+          :id
+        )
       end
 
       # Creates new current invoices from data objects.
