@@ -206,74 +206,42 @@ module Ruconomic
       def self.create_from_data(debtor_data)
         response = invoke('Debtor_CreateFromData') do |message|
           message.add 'data' do |data|
-            data.add 'Handle' do |handle|
-              handle.add 'Number', debtor_data.fetch(:handle, {}).fetch(:number, nil)
-            end
-            data.add 'Number', debtor_data.fetch(:number, nil)
-            data.add 'DebtorGroupHandle' do |handle|
-              handle.add 'Number', debtor_data.fetch(:debtor_group_handle, {}).fetch(:number, nil)
-            end
-            data.add 'Name', debtor_data.fetch(:name, nil)
-            data.add 'VatZone', debtor_data.fetch(:vat_zone, nil)
-            data.add 'ExtendedVatZone' do |handle|
-              handle.add 'Number', debtor_data.fetch(:extended_vat_zone, {}).fetch(:number, nil)
-            end
-            data.add 'CurrencyHandle' do |handle|
-              handle.add 'Code', debtor_data.fetch(:currency_handle, {}).fetch(:code, nil)
-            end
-            if price_group_handle = debtor_data.fetch(:price_group_handle, {}).fetch(:number, nil)
-              data.add 'PriceGroupHandle' do |handle|
-                handle.add 'Number', price_group_handle
-              end
-            end
-            data.add 'IsAccessible', debtor_data.fetch(:is_accessible, nil)
-            data.add 'Ean', debtor_data.fetch(:ean, nil)
-            data.add 'PublicEntryNumber', debtor_data.fetch(:public_entry_number, nil)
-            data.add 'Email', debtor_data.fetch(:email, nil)
-            data.add 'TelephoneAndFaxNumber', debtor_data.fetch(:telephone_and_fax_number, nil)
-            data.add 'Website', debtor_data.fetch(:website, nil)
-            data.add 'Address', debtor_data.fetch(:address, nil)
-            data.add 'PostalCode', debtor_data.fetch(:postal_code, nil)
-            data.add 'City', debtor_data.fetch(:city, nil)
-            data.add 'Country', debtor_data.fetch(:country, nil)
-            if credit_maximum = debtor_data.fetch(:credit_maximum, nil)
-              data.add 'CreditMaximum', credit_maximum
-            end
-            data.add 'VatNumber', debtor_data.fetch(:vat_number, nil)
-            data.add 'CINumber', debtor_data.fetch(:ci_number, nil)
-            data.add 'TermOfPaymentHandle' do |handle|
-              handle.add 'Id', debtor_data.fetch(:term_of_payment_handle, {}).fetch(:id, nil)
-            end
-            if layout_id = debtor_data.fetch(:layout_handle, {}).fetch(:id, nil)
-              data.add 'LayoutHandle' do |handle|
-                handle.add 'Id', layout_id
-              end
-            end
-            if attention_id = debtor_data.fetch(:attention_handle, {}).fetch(:id, nil)
-              data.add 'AttentionHandle' do |handle|
-                handle.add 'Id', attention_id
-              end
-            end
-            if your_reference_id = debtor_data.fetch(:your_reference_handle, {}).fetch(:id, nil)
-              data.add 'YourReferenceHandle' do |handle|
-                handle.add 'Id', your_reference_id
-              end
-            end
-            if our_reference_handle = debtor_data.fetch(:our_reference_handle, {}).fetch(:number, nil)
-              data.add 'OurReferenceHandle' do |handle|
-                handle.add 'Number', our_reference_handle
-              end
-            end
-            data.add 'Balance', debtor_data.fetch(:balance, nil)
-            if delivery_id = debtor_data.fetch(:default_delivery_location_handle, {}).fetch(:id, nil)
-              data.add 'DefaultDeliveryLocationHandle' do |handle|
-                handle.add 'Id', delivery_id
-              end
-            end
+            data.add_handle('Handle', debtor_data.dig(:handle, :number))
+            data.add('Number', debtor_data.dig(:number))
+            data.add_handle('DebtorGroupHandle', debtor_data.dig(:debtor_group_handle, :number))
+            data.add('Name', debtor_data.dig(:name))
+            data.add('VatZone', debtor_data.dig(:vat_zone))
+            data.add_handle('ExtendedVatZone', debtor_data.dig(:extended_vat_zone, :number))
+            data.add_handle('CurrencyHandle', debtor_data.dig(:currency_handle, :code), 'Code')
+            data.add_handle('PriceGroupHandle', debtor_data.dig(:price_group_handle, :number))
+            data.add('IsAccessible', debtor_data.dig(:is_accessible))
+            data.add_optional('Ean', debtor_data.dig(:ean))
+            data.add_optional('PublicEntryNumber', debtor_data.dig(:public_entry_number))
+            data.add_optional('Email', debtor_data.dig(:email))
+            data.add_optional('TelephoneAndFaxNumber', debtor_data.dig(:telephone_and_fax_number))
+            data.add_optional('Website', debtor_data.dig(:website))
+            data.add_optional('Address', debtor_data.dig(:address))
+            data.add_optional('PostalCode', debtor_data.dig(:postal_code))
+            data.add_optional('City', debtor_data.dig(:city))
+            data.add_optional('Country', debtor_data.dig(:country))
+            data.add_optional('CreditMaximum', debtor_data.dig(:credit_maximum))
+            data.add_optional('VatNumber', debtor_data.dig(:vat_number))
+            data.add_optional('CINumber', debtor_data.dig(:ci_number))
+            data.add_handle('TermOfPaymentHandle', debtor_data.dig(:term_of_payment_handle, :id), 'Id')
+            data.add_handle('LayoutHandle', debtor_data.dig(:layout_handle, :id), 'Id')
+            data.add_handle('AttentionHandle', debtor_data.dig(:attention_handle, :id), 'Id')
+            data.add_handle('YourReferenceHandle', debtor_data.dig(:your_reference_handle, :id), 'Id')
+            data.add_handle('OurReferenceHandle', debtor_data.dig(:our_reference_handle, :number))
+            data.add_optional('Balance', debtor_data.dig(:balance))
+            data.add_handle('DefaultDeliveryLocationHandle', debtor_data.dig(:default_delivery_location_handle, :id), 'Id')
           end
         end
 
-        response.to_hash[:debtor_create_from_data_response][:debtor_create_from_data_result][:number]
+        response.to_hash.dig(
+          :debtor_create_from_data_response,
+          :debtor_create_from_data_result,
+          :number
+        )
       end
 
       # Creates new debtors from data objects.
