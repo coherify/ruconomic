@@ -1,5 +1,18 @@
 # Changelog
 
+# 0.9.10
+
+ - CurrentInvoice: get all
+ - CashBook: book
+
+# 0.9.9
+
+ - CashBook: get next voucher number
+ - Debtor: create from data - add optional attributes
+ - CurrentInvoice: create from data
+ - CurrentInvoiceLine: create from data - add optional attributes
+ - Debtor: update from data
+
 # 0.9.8
 
  - Invoice: get all (olepalm)
