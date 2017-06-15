@@ -1,5 +1,12 @@
 # Changelog
 
+# 0.9.11
+
+ - TemplateCollection: get all
+ - TemplateCollection: get data
+ - TermOfPayment: get all
+ - TermOfPayment: get data
+
 # 0.9.10
 
  - CurrentInvoice: get all
