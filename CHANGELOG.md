@@ -1,5 +1,9 @@
 # Changelog
 
+# 0.9.12
+
+ - CurrentInvoice: add EAN
+
 # 0.9.11
 
  - TemplateCollection: get all
