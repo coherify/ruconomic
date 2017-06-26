@@ -496,6 +496,7 @@ module Ruconomic
             data.add_optional('DebtorPostalCode', invoice_data.dig(:debtor_postal_code))
             data.add_optional('DebtorCity', invoice_data.dig(:debtor_city))
             data.add_optional('DebtorCountry', invoice_data.dig(:debtor_country))
+            data.add_optional('DebtorEan', invoice_data.dig(:debtor_ean))
             data.add_handle('AttentionHandle', invoice_data.dig(:attention_handle, :id), 'Id')
             data.add('Date', invoice_data.dig(:date))
             data.add_handle('TermOfPaymentHandle', invoice_data.dig(:term_of_payment_handle, :id), 'Id')
