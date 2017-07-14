@@ -498,6 +498,7 @@ module Ruconomic
             data.add_optional('DebtorCountry', invoice_data.dig(:debtor_country))
             data.add_optional('DebtorEan', invoice_data.dig(:debtor_ean))
             data.add_handle('AttentionHandle', invoice_data.dig(:attention_handle, :id), 'Id')
+            data.add_handle('YourReferenceHandle', invoice_data.dig(:your_reference_handle, :id), 'Id')
             data.add('Date', invoice_data.dig(:date))
             data.add_handle('TermOfPaymentHandle', invoice_data.dig(:term_of_payment_handle, :id), 'Id')
             data.add('DueDate', invoice_data.dig(:due_date))
