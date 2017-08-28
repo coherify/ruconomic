@@ -331,7 +331,16 @@ module Ruconomic
           end
         end
 
-        response.to_hash[:invoice_get_data_response][:invoice_get_data_result]
+        response = response.to_hash
+
+        if response[:invoice_get_data_response] && response[:invoice_get_data_response][:invoice_get_data_result]
+          response[:invoice_get_data_response][:invoice_get_data_result]
+        else
+          fault = {
+            code: "Invoice_GetData_no_result",
+            message: "No result in response: #{response.inspect}"
+          }
+          raise Fault, fault
       end
 
       # Returns invoice data objects for a given set of invoice handles.
