@@ -2,7 +2,7 @@
 
 The ruconomic gem provides a lightweight, speedy and easy-to-use ruby wrapper for the [e-conomic](http://www.e-conomic.com) SOAP web service - it will build, parse and transport some XML and little else. For a more full SOAPedelic experience, have a look at [rconomic](https://github.com/lokalebasen/rconomic).
 
-This gem is intended to be a crowd source project. The [e-conomic webservice](https://api.e-conomic.com/secure/api1/EconomicWebService.asmx) implements ~1500 operations(!), and all those operations are mapped to ruby classes and methods under ```lib/ruconomic/api``` - but not fully implemented. As always, the best way to understand is to [browse the source](https://github.com/coherify/ruconomic/tree/master/lib/ruconomic/api).
+This gem is intended to be a crowd source project. The [e-conomic webservice](https://api.e-conomic.com/secure/api1/EconomicWebService.asmx) implements ~1500 operations(!), and all those operations are mapped to ruby classes and methods under `lib/ruconomic/api` - but not fully implemented. As always, the best way to understand is to [browse the source](https://github.com/coherify/ruconomic/tree/master/lib/ruconomic/api).
 
 So, the idea is that we [add functionality](https://github.com/coherify/ruconomic#contributing) as needed.
 
@@ -71,7 +71,11 @@ end
 
 ## Documentation
 
-You can find the latest API documentation at [http://rdoc.info/github/coherify/ruconomic/index](http://rdoc.info/github/coherify/ruconomic/index) or generate your own copy with ```bundle install && bundle exec yardoc``` after cloning the repository.
+You can find the latest API documentation at http://rdoc.info/github/coherify/ruconomic/index or generate your own copy with `bundle install && bundle exec yardoc` after cloning the repository.
+
+## Testing
+
+Run the minitest suite with `bundle exec rake`
 
 ## Contributing
 
