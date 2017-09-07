@@ -307,8 +307,7 @@ module Ruconomic
           end
         end
 
-        response.to_hash[:debtor_update_from_data_response] \
-          [:debtor_update_from_data_result][:number]
+        response.fetch(:debtor_update_from_data_response, :debtor_update_from_data_result, :number)
       end
 
       # Returns a debtor data object for a given debtor.
@@ -323,7 +322,7 @@ module Ruconomic
           end
         end
 
-        response.to_hash[:debtor_get_data_response][:debtor_get_data_result]
+        response.fetch(:debtor_get_data_response, :debtor_get_data_result)
       end
 
       # Returns debtor data objects for a given set of debtor handles.
@@ -828,7 +827,7 @@ module Ruconomic
           end
         end
 
-        response.to_hash[:debtor_get_term_of_payment_response][:debtor_get_term_of_payment_result][:id]
+        response.fetch(:debtor_get_term_of_payment_response, :debtor_get_term_of_payment_result, :id)
       end
 
       # Sets the layout of a debtor. The value may be omitted.
@@ -855,7 +854,7 @@ module Ruconomic
           end
         end
 
-        response.to_hash[:debtor_get_layout_response][:debtor_get_layout_result][:id]
+        response.fetch(:debtor_get_layout_response, :debtor_get_layout_result, :id)
       end
 
       # Gets a handle for the attention of a debtor.
@@ -971,7 +970,7 @@ module Ruconomic
           message.add 'vatZone', vat_zone
         end
 
-        response.to_hash[:debtor_create_response][:debtor_create_result][:number]
+        response.fetch(:debtor_create_response, :debtor_create_result, :number)
       end
 
       # Return handles for all debtors

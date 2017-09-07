@@ -192,7 +192,7 @@ module Ruconomic
       def self.get_all
         response = invoke('Invoice_GetAll')
 
-        response.to_hash[:invoice_get_all_response][:invoice_get_all_result]
+        response.fetch(:invoice_get_all_response, :invoice_get_all_result)
       end
 
       # Returns a handle for the invoice with the given number.
@@ -304,7 +304,7 @@ module Ruconomic
           end
         end
 
-        response.to_hash[:invoice_get_pdf_response][:invoice_get_pdf_result]
+        response.fetch(:invoice_get_pdf_response, :invoice_get_pdf_result)
       end
 
       # Gets an OIO XML string representing an invoice.
@@ -331,16 +331,7 @@ module Ruconomic
           end
         end
 
-        response = response.to_hash
-
-        if response[:invoice_get_data_response] && response[:invoice_get_data_response][:invoice_get_data_result]
-          response[:invoice_get_data_response][:invoice_get_data_result]
-        else
-          fault = {
-            code: "Invoice_GetData_no_result",
-            message: "No result in response: #{response.inspect}"
-          }
-          raise Fault, fault
+        response.fetch(:invoice_get_data_response, :invoice_get_data_result)
       end
 
       # Returns invoice data objects for a given set of invoice handles.
