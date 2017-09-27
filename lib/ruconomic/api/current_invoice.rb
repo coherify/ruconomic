@@ -279,8 +279,7 @@ module Ruconomic
           end
         end
 
-        response.to_hash[:current_invoice_get_text_line1_response] \
-          [:current_invoice_get_text_line1_result]
+        response.fetch(:current_invoice_get_text_line1_response, :current_invoice_get_text_line1_result)
       end
 
       # Set the primary line of a current invoice.
@@ -296,7 +295,7 @@ module Ruconomic
           message.add 'value', text
         end
 
-        response.to_hash[:current_invoice_set_text_line1]
+        response.fetch(:current_invoice_set_text_line1)
       end
 
       # Gets the secondary line of text of a current invoice.
@@ -324,7 +323,7 @@ module Ruconomic
           message.add 'value', text
         end
 
-        response.to_hash[:current_invoice_set_text_line2]
+        response.fetch(:current_invoice_set_text_line2)
       end
 
       # Gets the other reference of a current invoice.
@@ -574,7 +573,7 @@ module Ruconomic
           end
         end
 
-        response.to_hash[:current_invoice_get_data_response][:current_invoice_get_data_result]
+        response.fetch(:current_invoice_get_data_response, :current_invoice_get_data_result)
       end
 
       # Returns current invoice data objects for a given set of current invoice handles.
@@ -600,7 +599,7 @@ module Ruconomic
           end
         end
 
-        response.to_hash[:current_invoice_create_response][:current_invoice_create_result][:id]
+        response.fetch(:current_invoice_create_response, :current_invoice_create_result, :id)
       end
 
       # Returns handles for all current invoices.
@@ -610,7 +609,7 @@ module Ruconomic
       def self.get_all
         response = invoke('CurrentInvoice_GetAll')
 
-        response.to_hash[:current_invoice_get_all_response][:current_invoice_get_all_result]
+        response.fetch(:current_invoice_get_all_response, :current_invoice_get_all_result)
       end
 
       # Returns handles for the current invoices which have the given employee as OurReference.
@@ -683,7 +682,7 @@ module Ruconomic
           end
         end
 
-        response.to_hash[:current_invoice_book_response][:current_invoice_book_result][:number]
+        response.fetch(:current_invoice_book_response, :current_invoice_book_result, :number)
       end
 
       # Books a current invoice.
@@ -710,7 +709,7 @@ module Ruconomic
           end
         end
 
-        response.to_hash[:current_invoice_delete_response]
+        response.fetch(:current_invoice_delete_response)
       end
 
       # Gets handles for the lines of a current invoice.
@@ -1111,7 +1110,7 @@ module Ruconomic
           message.add 'value', due_date
         end
 
-        response.to_hash[:current_invoice_set_due_date_response]
+        response.fetch(:current_invoice_set_due_date_response)
       end
 
       # Gets the currency of a current invoice.

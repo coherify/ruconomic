@@ -4,6 +4,7 @@ require "ruconomic/soap/node"
 module Ruconomic
   module SOAP
     class Document < LibXML::XML::Document
+      class KeyError < StandardError; end
       
       def initialize(xml_version = "1.0")
         super(xml_version)
@@ -27,6 +28,25 @@ module Ruconomic
         h = { self.root.name.to_s.to_sym => traverse(self.root) }
         
         h[:Envelope][:body] 
+      end
+
+      # Fetches a subnode as a hash. Errors if the path does not exist
+      # To be backwards compatible, it returns nil instead of error if the last part of the path is not found
+      def fetch(*path)
+        path.each.with_index.reduce(to_hash) do |hash, (key, index)|
+          case hash
+          when Hash
+            hash.fetch(key) do
+              if index == path.size - 1
+                nil
+              else
+                raise KeyError, "No such key path #{path.inspect} in document #{to_hash.inspect}"
+              end
+            end
+          else
+            raise KeyError, "Key path #{path.inspect} does not represent a hash in document #{to_hash.inspect}"
+          end
+        end
       end
 
       # We want #string to return a Ruconomic::SOAP::Document and not a LibXML::XML::Document

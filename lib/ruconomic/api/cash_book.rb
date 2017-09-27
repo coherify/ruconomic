@@ -39,8 +39,7 @@ module Ruconomic
           end
         end
 
-        response.to_hash[:cash_book_get_data_response] \
-          [:cash_book_get_data_result]
+        response.fetch(:cash_book_get_data_response, :cash_book_get_data_result)
       end
 
       # Returns cash book data objects for a given set of cash book handles.
@@ -62,7 +61,7 @@ module Ruconomic
       def self.get_all
         response = invoke('CashBook_GetAll')
 
-        response.to_hash[:cash_book_get_all_response][:cash_book_get_all_result]
+        response.fetch(:cash_book_get_all_response, :cash_book_get_all_result)
       end
 
       # Returns a handle for the cash book with the given number.
@@ -151,8 +150,7 @@ module Ruconomic
           end
         end
 
-        response.to_hash[:cash_book_get_entries_response] \
-          [:cash_book_get_entries_result]
+        response.fetch(:cash_book_get_entries_response, :cash_book_get_entries_result)
       end
 
       # Delete all entries from a cash book. Action that cannot be undone.
