@@ -1,5 +1,11 @@
 # Changelog
 
+# 0.9.13
+
+- Added possibility to set YourReferenceHandle on CurrentInvoice.create_from_data
+- Can get invoice lines from an invoice
+- Better exception message if no result on Invoice_GetData
+
 # 0.9.12
 
  - CurrentInvoice: add EAN
