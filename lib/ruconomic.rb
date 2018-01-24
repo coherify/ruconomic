@@ -5,7 +5,6 @@ require "ruconomic/web_service"
 require "ruconomic/api"
 
 module Ruconomic
-
   URL = "https://api.e-conomic.com/secure/api1/EconomicWebService.asmx"
 
   class << self
@@ -44,10 +43,10 @@ module Ruconomic
       with_credential = agreement && username && password && url
       with_token      = token && app_token && url
 
-      if with_credential
-        Ruconomic::API.connect(Ruconomic.agreement, Ruconomic.username, Ruconomic.password)
-      elsif with_token
+      if with_token
         Ruconomic::API.connect_with_token(Ruconomic.token, Ruconomic.app_token)
+      elsif with_credential
+        raise "Connecting with credentials no longer supported by Economic API. Please use tokens instead."
       else
         raise "Not configured"
       end
