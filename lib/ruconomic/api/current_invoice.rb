@@ -514,7 +514,7 @@ module Ruconomic
             data.add('GrossAmount', invoice_data.dig(:gross_amount))
             data.add('Margin', invoice_data.dig(:margin))
             data.add('MarginAsPercent', invoice_data.dig(:margin_as_percent))
-            data.add('OurReferenceHandle', invoice_data.dig(:our_reference))
+            data.add_optional('OurReferenceHandle', invoice_data.dig(:our_reference))
           end
         end
 
