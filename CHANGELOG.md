@@ -1,5 +1,12 @@
 # Changelog
 
+# 0.9.14
+
+- Remove deprecated connect (with credentials) method
+- Added Application_CreateAgreementGrantToken
+- CashBookEntry: get_data
+- CurrentInvoice: find_by_our_reference
+
 # 0.9.13
 
 - Added possibility to set YourReferenceHandle on CurrentInvoice.create_from_data
