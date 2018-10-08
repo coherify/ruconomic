@@ -625,7 +625,7 @@ module Ruconomic
             handle.add 'Number', reference
           end
         end
-        response.fetch(:current_invoice_find_by_our_reference)
+        response.fetch(:current_invoice_find_by_our_reference_response, :current_invoice_find_by_our_reference_result)
       end
 
       # Returns handles for the current invoices with a given other reference.
